@@ -19,15 +19,15 @@ var byMonthYear = ee.FeatureCollection(
         .filter(ee.Filter.calendarRange(y, y, 'year'))
         .filter(ee.Filter.calendarRange(m, m, 'month'))
         .mean();
-      
+
       var stats = filtered.reduceRegion({
         reducer: ee.Reducer.mean(),
         geometry: table,
         scale: SCALE
       });
-      
+
       var isDrought = ee.Number(stats.get('soil')).lt(DROUGHT_THRESHOLD);
-      
+
       return ee.Feature(null, {
         'soil_value': stats.get('soil'),
         'year': ee.Number(y).format('%d'),
@@ -170,7 +170,7 @@ panel.add(yearSelector);
 var soilViz = {
   min: 0,
   max: 0.00005,
-  palette: ['#000004', '#2C115F', '#721F81', '#B63679', 
+  palette: ['#000004', '#2C115F', '#721F81', '#B63679',
             '#F1605D', '#FEAF77', '#FCFDBF']
 };
 
@@ -223,7 +223,7 @@ years.getInfo().forEach(function(year) {
     .filter(ee.Filter.calendarRange(year, year, 'year'))
     .mean()
     .clip(table);
-    
+
   Export.image.toDrive({
     image: yearImage,
     description: 'soil_moisture_map_' + year,

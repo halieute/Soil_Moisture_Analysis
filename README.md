@@ -36,7 +36,7 @@ Advanced Earth Engine script for analyzing soil moisture patterns using TERRACLI
 
 ![alt text](resu.png)
 
-# Installation 
+# Installation
 
 * Clone repository (Cloner le dépôt)
 * Upload script to Google Earth Engine (Télécharger le script sur Google Earth Engine)
